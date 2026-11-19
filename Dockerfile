@@ -26,4 +26,4 @@ ENV PORT=80
 EXPOSE 80
 
 # Start Jupyter Notebook listening on Vercel's $PORT
-CMD ["sh", "-c", "start-notebook.py --ServerApp.ip=0.0.0.0 --ServerApp.port=${PORT:-80} --ServerApp.token='' --ServerApp.password='' --ServerApp.allow_origin='*' --ServerApp.allow_remote_access=True --ServerApp.disable_check_xsrf=True --ServerApp.root_dir=/home/jovyan"]
+CMD ["sh", "-c", "start-notebook.py --ServerApp.ip=0.0.0.0 --ServerApp.port=${PORT:-80} --ServerApp.token=${JUPYTER_TOKEN:-327606} --ServerApp.password='' --ServerApp.allow_origin='*' --ServerApp.allow_remote_access=True --ServerApp.disable_check_xsrf=True --ServerApp.root_dir=/home/jovyan"]
