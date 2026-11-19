@@ -1,3 +1,0 @@
-jupyter-server
-jupyterlite-core
-jupyterlite-pyodide-kernel

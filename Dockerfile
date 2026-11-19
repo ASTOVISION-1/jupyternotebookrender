@@ -21,12 +21,9 @@ USER ${NB_UID}
 # Set working directory
 WORKDIR /home/jovyan
 
-# Render web service port
-EXPOSE 10000
+# Vercel container port
+ENV PORT=80
+EXPOSE 80
 
-# Start Jupyter Notebook
-CMD ["start-notebook.py", \
-     "--ServerApp.ip=0.0.0.0", \
-     "--ServerApp.port=10000", \
-     "--ServerApp.allow_remote_access=True", \
-     "--ServerApp.root_dir=/home/jovyan/work"]
+# Start Jupyter Notebook listening on Vercel's $PORT
+CMD ["sh", "-c", "start-notebook.py --ServerApp.ip=0.0.0.0 --ServerApp.port=${PORT:-80} --ServerApp.token='' --ServerApp.password='' --ServerApp.allow_origin='*' --ServerApp.allow_remote_access=True --ServerApp.disable_check_xsrf=True --ServerApp.root_dir=/home/jovyan"]
